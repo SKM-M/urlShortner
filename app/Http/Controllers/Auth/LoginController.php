@@ -62,7 +62,7 @@ class LoginController extends Controller
     }
 
     /**
-     * Check User Login Attempt with JWTAuth
+     * Check User Login Attempt 
      *
      * @return Response
      */
@@ -77,7 +77,7 @@ class LoginController extends Controller
         // Attempt to authenticate user
         // If successful, redirect to their intended location
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
-            return redirect()->intended('dashboard');
+            return redirect()->intended('home');
         }
         // Authentication failed, redirect back to the login form
         return redirect()->back()->withInput($request->only('email', 'remember'));
@@ -112,6 +112,6 @@ class LoginController extends Controller
         Auth::logout();
         $request->session()->flush();
         $request->session()->regenerate();
-        return redirect()->guest(route('login'));
+        return redirect()->intended('login');
     }
 }

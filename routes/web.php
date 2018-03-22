@@ -29,19 +29,19 @@ Route::get('password/reset', function () {
 
 Route::group(['middleware' => 'web'], function () {
     Route::post('login', 'Auth\LoginController@login');
+    Route::post('logout', 'Auth\LoginController@logout');
     Route::post('register', 'Auth\RegisterController@create');
     Route::post('password/reset', 'Auth\ResetPasswordController@resetPassword');
 
     //Social providers login route
-    Route::get('login/{provider}', 'LoginController@redirectToProvider');
-    Route::get('login/{provider}/callback', 'LoginController@handleProviderCallback');
+    Route::get('login/{provider}', 'Auth\LoginController@redirectToProvider');
+    Route::get('login/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
 
     Auth::routes();
     Route::get('home', 'HomeController@index');
-    Route::get('dashboard', 'HomeController@showDashboard');
     Route::get('users', 'UserController@getUsers');
     Route::any('users/search', 'UserController@searchUsers');
-    Route::get('/', 'HomeController@showDashboard');
+    Route::get('/', 'HomeController@index');
 
 });
 
