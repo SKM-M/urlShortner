@@ -66,6 +66,10 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'provider' => 'social',
+            'provider_id' => '12345',
+            'remember_token' => str_random(10),
+            'created_at' => date('Y-m-d H:i:s')
         ]);
     }
 }
