@@ -119,11 +119,6 @@ return [
             'url' => '/profile',
             'icon' => 'user',
         ],
-        [
-            'text' => 'Change Password',
-            'url' => '/changepassword',
-            'icon' => 'lock',
-        ],
 
     ],
 

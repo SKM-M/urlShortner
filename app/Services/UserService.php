@@ -124,4 +124,8 @@ class UserService
         return $this->userRepository->getUserByEmailAccount($email);
     }
 
+    public function shortUrl(array $data)
+    {
+        return $this->userRepository->shortUrl($data);
+    }
 }

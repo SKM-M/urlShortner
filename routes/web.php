@@ -17,17 +17,10 @@ Route::get('/', function () {
 Route::get('login', function () {
     return view('auth.login');
 });
-Route::get('register', function () {
-    return view('auth.register');
-});
-Route::get('password/reset', function () {
-    return view('auth.reset');
-});
 
 
-
-
-Route::group(['middleware' => 'web'], function () {
+Route::group(['middleware' => ['web', 'iefix']], function () {
+    // your routes here
     Route::post('login', 'Auth\LoginController@login');
     Route::post('logout', 'Auth\LoginController@logout');
     Route::post('register', 'Auth\RegisterController@create');
@@ -39,8 +32,8 @@ Route::group(['middleware' => 'web'], function () {
 
     Auth::routes();
     Route::get('home', 'HomeController@index');
-    Route::get('users', 'UserController@getUsers');
-    Route::any('users/search', 'UserController@searchUsers');
+    Route::get('urlShortner', 'UserController@shortnerURL');
+    Route::post('urlShortner', 'UserController@urlShort');
     Route::get('/', 'HomeController@index');
 
 });

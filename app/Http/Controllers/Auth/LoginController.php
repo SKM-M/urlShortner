@@ -77,7 +77,7 @@ class LoginController extends Controller
         // Attempt to authenticate user
         // If successful, redirect to their intended location
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
-            return redirect()->intended('home');
+            return redirect()->intended('urlShortner');
         }
         // Authentication failed, redirect back to the login form
         return redirect()->back()->withInput($request->only('email', 'remember'));
@@ -97,7 +97,7 @@ class LoginController extends Controller
     
         // Login and "remember" the given user...
         if (Auth::attempt(['email' => $userExists->email, 'password' => '555555'], 'on')) {
-            return redirect()->intended('home');
+            return redirect()->intended('urlShortner');
         }
         //return Redirect::to($url);   
     }
