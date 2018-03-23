@@ -16,7 +16,7 @@
 <div class="text-center">
 @if(isset($link))
 <p>
-<strong><a href="{{{ $link['url'] }}}">http://urlShortner/{{{ $link['hash'] }}}</a></strong>
+<strong><a href="{{{ $link['url'] }}}" target="_blank">http://urlShortner/{{{ $link['hash'] }}}</a></strong>
 
 </p>
 @endif
