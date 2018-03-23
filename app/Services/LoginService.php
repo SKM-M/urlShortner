@@ -31,10 +31,12 @@ class LoginService
         $userData =
             [
             'name' => $user->name,
-            'password' => '55555',
+            'password' => '555555',
             'email' => $email,
             'provider' => $provider,
-            'provider_id' => $user->id
+            'provider_id' => $user->id,
+            'remember_token' => str_random(10),
+            'created_at' => date('Y-m-d H:i:s')
         ];
 
         return $this->loginRepository->create($userData);

@@ -53,8 +53,15 @@
                                 class="btn btn-primary btn-block btn-flat">{{ trans('adminlte::adminlte.sign_in') }}</button>
                     </div>
                     <!-- /.col -->
+                    <hr>
+            <div class="form-group">
+        <div class="col-md-6 col-md-offset-4">
+            <a href="{{ url('/login/google') }}" class="btn btn-google"><i class="fa fa-google"></i> Google</a>
+         </div>
+    </div>
                 </div>
             </form>
+        
             <div class="auth-links">
                 <a href="{{ url(config('adminlte.password_reset_url', 'password/reset')) }}"
                    class="text-center"
