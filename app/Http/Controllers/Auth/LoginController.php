@@ -93,11 +93,12 @@ class LoginController extends Controller
         $user = Socialite::driver($provider)->user();
 
         $userExists = $this->loginService->findOrCreateUser($user, $provider);
-
-        Auth::login($userExists, true);
+        
     
         // Login and "remember" the given user...
-        return redirect($this->redirectTo); 
+        if (Auth::attempt(['email' => $userExists->email, 'password' => '555555'], 'on')) {
+            return redirect()->intended('home');
+        }
         //return Redirect::to($url);   
     }
 
