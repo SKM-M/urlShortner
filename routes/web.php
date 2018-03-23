@@ -32,6 +32,7 @@ Route::group(['middleware' => ['web', 'iefix']], function () {
 
     Auth::routes();
     Route::get('home', 'HomeController@index');
+    Route::get('profile', 'UserController@userProfile');
     Route::get('urlShortner', 'UserController@shortnerURL');
     Route::post('urlShortner', 'UserController@urlShort');
     Route::get('/', 'HomeController@index');

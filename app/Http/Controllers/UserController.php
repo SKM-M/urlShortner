@@ -52,7 +52,17 @@ class UserController extends Controller
         }
         return view('users')->withMessage('No Details found for ' . $q . ' Try to search again !');
     }
+    // get loggedin user profile
+    public function userProfile()
+    {
+        if (Auth::check()) {
+            $user = Auth::user();
+            $user = \App\Models\User::find($user->id);
+            $user = $user->toArray();
+            return view('profile', ['user' => $user]);
+        }
 
+    }
     public function urlShort(Request $request)
     {
         $data = array();
